@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-hand: 'Caveat', cursive;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'Space Grotesk', monospace;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: #1f2022;
+    background-color: #f3f0e8;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.04em;
+  }
+
+  .font-hand {
+    font-family: var(--font-hand);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Notebook ruled paper effect */
+.bg-notebook-paper {
+  background-color: #faf7ef;
+  background-image: 
+    linear-gradient(to bottom, transparent 27px, rgba(194, 185, 172, 0.35) 28px);
+  background-size: 100% 28px;
+}
+
+/* Subtle graph paper pattern */
+.bg-grid-pattern {
+  background-color: #f1ede2;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Retro desktop dot grid */
+.bg-dot-pattern {
+  background-color: #e6e2d8;
+  background-image: radial-gradient(rgba(40, 40, 40, 0.12) 1.2px, transparent 1.2px);
+  background-size: 16px 16px;
+}
+
+/* Washi Tape Effects */
+.washi-tape {
+  position: absolute;
+  height: 22px;
+  background: rgba(254, 240, 138, 0.85);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  z-index: 20;
+  backdrop-filter: blur(0.5px);
+  border-left: 2px dashed rgba(217, 119, 6, 0.3);
+  border-right: 2px dashed rgba(217, 119, 6, 0.3);
+}
+
+.washi-tape-pink {
+  background: rgba(251, 207, 232, 0.88);
+  border-left: 2px dashed rgba(219, 39, 119, 0.3);
+  border-right: 2px dashed rgba(219, 39, 119, 0.3);
+}
+
+.washi-tape-blue {
+  background: rgba(191, 219, 254, 0.88);
+  border-left: 2px dashed rgba(37, 99, 235, 0.3);
+  border-right: 2px dashed rgba(37, 99, 235, 0.3);
+}
+
+.washi-tape-green {
+  background: rgba(187, 247, 208, 0.88);
+  border-left: 2px dashed rgba(22, 163, 74, 0.3);
+  border-right: 2px dashed rgba(22, 163, 74, 0.3);
+}
+
+.washi-tape-white {
+  background: rgba(255, 255, 255, 0.82);
+  border-left: 2px dashed rgba(160, 160, 160, 0.4);
+  border-right: 2px dashed rgba(160, 160, 160, 0.4);
+}
+
+/* Hard retro drop shadows */
+.shadow-retro {
+  box-shadow: 3px 3px 0px #1f2022;
+}
+
+.shadow-retro-lg {
+  box-shadow: 6px 6px 0px #1f2022;
+}
+
+.shadow-retro-sm {
+  box-shadow: 2px 2px 0px #1f2022;
+}
+
+/* Polaroid card effect */
+.polaroid {
+  background: #ffffff;
+  padding: 10px 10px 24px 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Continuous Kinetic Marquee Animations */
+@keyframes marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-scroll-reverse {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-marquee-infinite {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll 24s linear infinite;
+}
+
+.animate-marquee-fast {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll 14s linear infinite;
+}
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll-reverse 28s linear infinite;
+}
+
