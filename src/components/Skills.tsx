@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SKILLS } from '../data/skills';
+import { SkillLogo } from './SkillLogo';
 import { Tape } from './RetroSticker';
 import { Sparkles, Layers, Cpu, Database, Smartphone, Layout } from 'lucide-react';
 
@@ -57,7 +58,7 @@ export const Skills: React.FC = () => {
 
             <div className="flex items-center space-x-2">
               <span className="px-3 py-1 bg-[#bbf7d0] text-neutral-900 border border-neutral-900 rounded text-xs font-mono font-bold shadow-retro-sm">
-                ✦ 14 Core Techs
+                ✦ {SKILLS.length} Core Techs
               </span>
             </div>
           </div>
@@ -96,9 +97,9 @@ export const Skills: React.FC = () => {
               return (
                 <div
                   key={skill.name}
-                  onMouseEnter={() => setActiveSkillInfo(`${skill.name}: ${skill.level} (${skill.category})`)}
+                  onMouseEnter={() => setActiveSkillInfo(`${skill.name} • ${skill.proficiency || 0}% Proficiency • ${skill.level}`)}
                   onMouseLeave={() => setActiveSkillInfo(null)}
-                  className="group relative p-3 sm:p-4 rounded-xl border-2 border-neutral-900 shadow-retro transition-all duration-200 hover:rotate-0 hover:scale-105 hover:z-20 cursor-pointer flex flex-col justify-between"
+                  className="group relative p-2 sm:p-3 rounded-xl border-2 border-neutral-900 shadow-retro transition-all duration-200 hover:rotate-0 hover:scale-105 hover:z-20 cursor-pointer flex flex-col justify-between"
                   style={{
                     backgroundColor: skill.color || '#ffffff',
                     transform: `rotate(${angle}deg)`
@@ -109,28 +110,47 @@ export const Skills: React.FC = () => {
                     <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-2.5 bg-white/70 border-l border-r border-dashed border-neutral-400 rounded-[1px]" />
                   )}
 
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-neutral-800/80">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-[8px] font-mono font-bold uppercase tracking-wider text-neutral-800/80">
                       {skill.category}
                     </span>
                     {skill.highlight && (
-                      <Sparkles className="w-3 h-3 text-neutral-900" />
+                      <Sparkles className="w-2.5 h-2.5 text-neutral-900" />
                     )}
                   </div>
 
+                  {/* Logo / Icon Circle */}
+                  <div className="mb-2 flex justify-center">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/40 border border-neutral-900/30 backdrop-blur-sm">
+                      <SkillLogo skill={skill} size={24} />
+                    </div>
+                  </div>
+
                   <div>
-                    <h4 className="font-display text-2xl sm:text-3xl text-neutral-950 tracking-wide group-hover:text-amber-900 transition-colors">
+                    <h4 className="font-display text-lg sm:text-xl text-neutral-950 tracking-wide group-hover:text-amber-900 transition-colors leading-tight">
                       {skill.name}
                     </h4>
-                    <span className="text-[11px] font-mono font-medium text-neutral-750 block mt-0.5">
+                    <span className="text-[9px] font-mono font-medium text-neutral-750 block mt-0.5">
                       {skill.level}
                     </span>
                   </div>
 
-                  {/* Bottom bar indicator */}
-                  <div className="mt-3 pt-2 border-t border-neutral-900/20 flex justify-between items-center text-[10px] font-mono text-neutral-800">
-                    <span>Verified</span>
-                    <span className="font-bold">✦</span>
+                  {/* Bottom bar with proficiency */}
+                  <div className="mt-2 pt-1 border-t border-neutral-900/20">
+                    <div className="flex justify-between items-center text-[8px] font-mono text-neutral-800 mb-1">
+                      <span>Proficiency</span>
+                      <span className="font-bold">{skill.proficiency || 0}%</span>
+                    </div>
+                    {/* Minimal progress bar */}
+                    <div className="w-full h-1 bg-neutral-200/50 rounded-full overflow-hidden border border-neutral-900/10">
+                      <div
+                        className="h-full rounded-full transition-all duration-300"
+                        style={{
+                          width: `${skill.proficiency || 0}%`,
+                          backgroundColor: skill.brandColor || '#666'
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
               );

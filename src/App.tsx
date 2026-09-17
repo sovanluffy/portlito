@@ -98,8 +98,11 @@ export default function App() {
       )}
 
       {/* Top Retro Browser Navigation (Only displayed after intro animation completes) */}
+      {/* Sticky at the App level too, with its own backdrop, so it stays pinned
+          to the top of the viewport as the page scrolls and content doesn't
+          show through underneath it */}
       {!showIntro && (
-        <div className="pt-3">
+        <div className="sticky top-0 z-50 pt-3 pb-1 ">
           <Navbar
             activeSection={activeSection}
             onNavigate={scrollToSection}

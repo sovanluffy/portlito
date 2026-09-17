@@ -1,7 +1,7 @@
 import React from 'react';
 import { Globe, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
-import heroPortrait from '../assets/images/developer_hero_portrait_1789520620763.jpg';
+import heroPortrait from '../assets/images/Gemini_Generated_Image_u3xpeiu3xpeiu3xp.jpeg';
 
 interface HeroProps {
   onViewWork: () => void;
